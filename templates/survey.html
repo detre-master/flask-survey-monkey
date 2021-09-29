@@ -1,0 +1,86 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+    {% for category, message in messages %}
+    <div class='alert alert-{{category}} alert-dismissible fade show'> {{ message }} 
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+    </div>
+    {% endfor %}
+{% endif %}
+{% endwith %}
+<br>
+
+    <div class='container'>
+        <br>
+
+          
+        <form action="{{url_for('survey')}}"
+        class="dropzone"
+        id="myAwesomeDropzone" placeholder="Drop file here to upload" style="border-radius: 5px; border-color: #B8EBD0;border-style: dashed;" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <div class="dz-message">
+            Drop `Survey Monkey` file here to upload
+        </div>
+
+        </form>
+        <br>
+        <button id='loading' class='btn btn-lg mt-4' style="background-color: #B8EBD0;border-color: #B8EBD0; font-weight: 900; color: #000;" form="myAwesomeDropzone" hidden disabled>Cleaning...</button>
+
+        <a id='download' href="{{url_for('download_survey')}}" class='btn btn-lg mt-4' style="background-color: #B8EBD0;border-color: #B8EBD0; font-weight: 900; color: #000;" form="myAwesomeDropzone" hidden>Download</a>
+    </div>
+ 
+
+   
+
+<script>
+
+    Dropzone.autoDiscover = false;
+
+
+    $(function() {
+    var myDropzone = new Dropzone("#myAwesomeDropzone");
+        
+        myDropzone.on("complete", function(file,response) {
+            console.log(response);
+        document.getElementById('loading').setAttribute('hidden','');
+        document.getElementById('download').removeAttribute('hidden'); 
+    });
+
+    myDropzone.on("error",function(file,response){
+        console.log(response);
+        window.location = "http://localhost:5000/"
+    })
+
+
+    })
+
+    Dropzone.options.myAwesomeDropzone = {
+        maxFiles: 1,
+        maxFilesize: 2, // MB
+        accept: function(file, done) {
+            if (file.type == "application/vnd.ms-excel" || file.type == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"  ) {
+
+                if(file.size < 200000){
+                   
+                      done(document.getElementById('loading').removeAttribute('hidden'))
+                  
+                } else {
+                    done("File size too large");
+                }
+                
+                
+            }
+            else { done("Not one of the supported file types"); }
+        }
+};
+
+
+</script>
+
+{% endblock content %}

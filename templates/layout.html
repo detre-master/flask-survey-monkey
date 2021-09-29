@@ -1,0 +1,97 @@
+<!doctype html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="{{url_for('static',filename='assets/images/favicon/favicon.ico')}}"  type="image/ico" >
+<link rel="icon" href="{{url_for('static',filename='assets/images/favicon/favicon-16x16.png')}}" sizes="16x16" type="image/png">
+<link rel="icon" href="{{url_for('static',filename='assets/images/favicon/favicon-32x32.png')}}" sizes="32x32" type="image/png">
+
+
+
+<linK rel='stylesheet' href='{{url_for("static",filename="css/dropzone.min.css") }}'>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<script src='{{url_for("static",filename="js/dropzone.min.js") }}'> </script>
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;900&display=swap');
+    html,body{
+        font-family: 'Poppins', sans-serif !important;
+        height: 100%
+    }
+
+
+        footer{
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            padding: 1rem;
+            width:100%;
+        }
+
+        .footer-text {
+            text-decoration: underline; 
+            color: black;
+        }
+</style>
+
+{% block custom_head %}
+
+
+{% endblock %}
+<title>Detre - Data cleaning made easy</title>
+</head>
+
+
+<body class="d-flex flex-column min-vh-100">
+    <!-- Navbar section -->
+    <section>    
+        <nav class="navbar" style="background-color: #faf8f5;">
+            <a class="nav-link" href="/" style="text-decoration: none; font-weight: 900;font-size: 30px; color:#8D5A97">Detre</a> 
+        </nav>
+    </section>
+
+       {% block content %} 
+
+       {% endblock content %}
+
+
+    <br>
+    <div class="footerfix"></div>
+    <footer style="display: flex; background-color: #faf8f5;">
+        <div class="container text-center">
+                <div class="col-3-md mt-2">
+                     <!-- Contact -->
+                     <div style="display: flex;">
+                        
+                        <div>
+                            <a class="ml-3 footer-text" href="https://www.youtube.com/channel/UCB4xcEMbw-0-pLzKfvDHFbw"  target="_blank">Youtube </a>
+                        </div>
+                        <div>
+                            <a class="ml-3 footer-text" href="https://twitter.com/DetreRasion"  target="_blank">Twitter </a>
+                        </div>
+                        
+                        <div>
+                            <a class="ml-3 footer-text" href="https://www.linkedin.com/in/detre-io-09741a218/"  target="_blank">Linkedin </a>
+                        </div>
+
+                        <div>
+                            <a class="ml-3 footer-text" href="https://www.instagram.com/detre_datacleaning/"  target="_blank">Instagram </a>
+                        </div>    
+
+
+                    </div>  
+                </div>
+        </div>
+    </footer>    
+
+</body>
+</html>
