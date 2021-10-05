@@ -1,5 +1,5 @@
 # python-survey-monkey
-A Flask application that can format Survey Moneky results
+A Flask application that can format Survey Monkey results
 
 
 ## Steps
@@ -8,6 +8,9 @@ A Flask application that can format Survey Moneky results
 3. run `python app.py`
 
 Go to http://localhost:5000
+
+## Live
+You can go to https://detre.io/ to see a live version of the application.
 
 
 
